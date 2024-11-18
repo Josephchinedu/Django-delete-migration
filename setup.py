@@ -8,7 +8,7 @@ setup(
     description="A Django management command to delete migrations.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/django-migration-cleaner",
+    url="https://github.com/Josephchinedu/Django-delete-migration.git",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
