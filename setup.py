@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-migration-cleaner",
-    version="1.0.0",  
+    version="1.0.2",  
     author="Devjoseph",
     author_email="joseph4jubilant@gmail.com",
     description="A Django management command to delete migrations.",
