@@ -45,6 +45,7 @@ class Command(BaseCommand):
 
         try:
             app_config = django_apps.get_app_config(app_name)
+            
         except LookupError:
             _app_name = f"{app_name}.apps.{str(app_name).capitalize()}Config"
             if app_name == _app_name:
