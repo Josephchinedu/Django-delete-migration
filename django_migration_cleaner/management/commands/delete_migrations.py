@@ -28,7 +28,8 @@ class Command(BaseCommand):
 
     def delete_app_migrations(self, app_name):
         if app_name not in settings.INSTALLED_APPS:
-            raise CommandError(f'App "{app_name}" is not in INSTALLED_APPS')
+            if f"{app_name}.apps.{str(app_name).capitalize()}Config" not in settings.INSTALLED_APPS:
+                raise CommandError(f'App "{app_name}" is not in INSTALLED_APPS')
 
         built_in_apps = [
             "django.contrib.admin",
@@ -45,7 +46,14 @@ class Command(BaseCommand):
         try:
             app_config = django_apps.get_app_config(app_name)
         except LookupError:
-            raise CommandError(f'App "{app_name}" does not exist')
+            _app_name = f"{app_name}.apps.{str(app_name).capitalize()}Config"
+            if app_name == _app_name:
+                app_name = _app_name.split(".")[0]
+
+                try:
+                    app_config = django_apps.get_app_config(app_name)
+                except LookupError:
+                    raise CommandError(f'App "{app_name}" does not exist')
 
         migration_folder = os.path.join(app_config.path, "migrations")
         if not os.path.exists(migration_folder):
