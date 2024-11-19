@@ -38,6 +38,19 @@ python manage.py delete_migrations app_name1 app_name2
 
 Replace app_name1, app_name2, etc. with the names of the apps for which you want to delete the migration files.
 
+#### Delete Last Migration of an app(s)
+
+```python
+python manage.py delete_migrations app_name --last
+```
+
+```python
+python manage.py delete_migrations app_name1 app_name2 --last
+```
+
+Replace app_name1, app_name2, etc. with the names of the apps for which you want to delete the last migration file.
+
+
 #### Delete Migrations for All Apps<br />
 To delete migration files for all apps within your Django project, run the following command:
 
